@@ -125,6 +125,13 @@ export const DELETE = async (request: NextRequest) => {
     );
   }
 
+  if (body.studentId.length !== 9) {
+    return NextResponse.json(
+      { ok: false, message: "Student Id must contain 9 characters" },
+      { status: 400 }
+    );
+  }
+
   //perform removing student from DB. You can choose from 2 choices
   //1. use array filter method
   // DB.students = DB.students.filter(...);
@@ -135,6 +142,6 @@ export const DELETE = async (request: NextRequest) => {
 
   return NextResponse.json({
     ok: true,
-    message: `Student Id ${body.studentId} has been deleted`,
+    message: `Student Id  ${body.studentId} has been deleted`,
   });
 };
